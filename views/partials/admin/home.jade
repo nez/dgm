@@ -30,6 +30,10 @@ nav.navbar.navbar-default.navbar-fixed-top
                     a( ui-sref="datasets.list" )
                         i.icon-box
                         |  Datasets
+                li( ng-class="{active:$state.includes('visualizers')}" )
+                    a( ui-sref="visualizers.list" )
+                        i.icon-box
+                        |  Visualizadores
             ul.nav.navbar-nav.navbar-right
                 li.dropdown
                     a.dropdown-toggle( href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" )
@@ -44,9 +48,9 @@ nav.navbar.navbar-default.navbar-fixed-top
                                 i.glyphicon.glyphicon-open
                                 | Importar
                 li.dropdown
-                    a.dropdown-toggle( href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ) 
+                    a.dropdown-toggle( href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" )
                         img( class="menu-avatar" src="img/ic_avatar.png" alt="{{ user.name }}" )
-                        | {{ user.name }} 
+                        | {{ user.name }}
                         span.caret
                     ul.dropdown-menu
                         li

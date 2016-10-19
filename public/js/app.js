@@ -12,6 +12,7 @@ define( function ( require ) {
     require( 'posts/PostsModule' );
     require( 'sessions/SessionsModule' );
     require( 'users/UsersModule' );
+    require( 'visualizers/VisualizersModule')
 
     var app     = angular.module( 'dgm', [
             'angular-medium-editor',
@@ -34,7 +35,8 @@ define( function ( require ) {
             'LandingModule',
             'PostsModule',
             'SessionsModule',
-            'UsersModule'
+            'UsersModule',
+            'VisualizersModule'
         ]);
 
     app.config( [ '$locationProvider', '$urlRouterProvider', '$httpProvider', function ( $locationProvider, $urlRouterProvider, $httpProvider ) {

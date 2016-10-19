@@ -1,0 +1,23 @@
+.row
+    .col-md-12
+        div.row.table-header
+            div.col-md-3.col-md-offset-9
+                form.search-form
+                    input.form-control( type="text" placeholder="Buscar" )
+                    i.glyphicon.glyphicon-search
+        table.table.table-striped
+            thead
+                tr
+                    th Titulo
+                    th( width="20%" ) Fecha de actualización
+                    th( width="8%" ) Estatus
+            tbody
+                tr( ng-repeat="visualizer in visualizers" )
+                    td
+                        a( ui-sref="visualizers.edit({ id : visualizer._id })" alt="{{ visualizer.name }}" ) {{ visualizer.name }}
+                    td {{ visualizer.edition_date | date : 'dd-MM-yyyy' }}
+                    td
+                        span.post-label.label-published( ng-if="visualizer.status == 'PUBLISHED'" ) Publicado
+                        span.post-label.label-draft( ng-if="visualizer.status == 'DRAFT'" ) Borrador
+        p.text-center
+            uib-pagination( max-size="10" boundary-links="true" boundary-link-numbers="true" rotate="true" total-items="total" items-per-page="per_page" previous-text!="&lsaquo;" next-text!="&rsaquo;" first-text!="&laquo;" last-text!="&raquo;" ng-model="page" ng-change="query()" )
