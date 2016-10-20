@@ -39,5 +39,6 @@ define( function () {
         USERS_QUERIED           : 'users.queried',
         USERS_RETRIEVED         : 'users.retrieved',
         USERS_UPDATED           : 'users.updated'
+        VISUALIZER_UPDATED      : 'visualizers.updated'
     });
 });

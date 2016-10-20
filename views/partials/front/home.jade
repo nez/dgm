@@ -1,11 +1,12 @@
 section#landing-search( ui-view="landing-search" )
 section#landing-data.section-data( ui-view="landing-data" )
 section#landing-blog( ui-view="landing-blog" data-section="blog" )
+section#landing-visualizaciones( ui-view="landing-visualizaciones" data-section="visualizaciones")
 section#landing-tools( ui-view="landing-tools" data-section="herramientas" )
 section#landing-subscribe( ui-view="landing-subscribe" )
 #site-functionality
     p
-        | Conoce las nuevas funcionalidades 
+        | Conoce las nuevas funcionalidades
         a( href="#" ng-click="openVideo( $event )" ) aquí
     button( type="button" class="close" aria-label="Close" ng-click="closeFunctionality()" )
         span( aria-hidden="true" ) &times;

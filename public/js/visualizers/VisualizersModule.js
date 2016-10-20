@@ -15,7 +15,7 @@ define( function ( require ) {
 
     VisualizersModule.controller( 'VisualizersListCtrl', [ '$scope', 'VisualizersService', VisualizersListCtrl ]);
 
-    VisualizersModule.controller( 'VisualizersEditCtrl', [ '$scope', '$stateParams', 'events', 'VisualizersService', VisualizersEditCtrl ]);
+    VisualizersModule.controller( 'VisualizersEditCtrl', [ '$scope', '$stateParams', 'VisualizersService', VisualizersEditCtrl ]);
 
     VisualizersModule.factory( 'VisualizersService', [ 'BaseService', VisualizersService ]);
 });

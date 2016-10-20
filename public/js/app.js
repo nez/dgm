@@ -53,7 +53,7 @@ define( function ( require ) {
             return {
                 request     : function( config ) {
                     var api = ( config.url.indexOf( 'cms-api' ) != -1 ) ? true : false;
-
+                    console.log('intercept -> ' + config.url )
                     if ( api ) {
                         var holder  = '';
 

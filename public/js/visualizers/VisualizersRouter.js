@@ -23,6 +23,15 @@ define( function() {
 
                   }
                 }
+            })
+            .state( 'visualizers.edit', {
+                url     : '/edit/:id',
+                views   : {
+                  'visualizers-main'  : {
+                      templateUrl     : 'partials/visualizers/create',
+                      controller      : 'VisualizersEditCtrl'
+                  }
+                }
             });
     };
 
