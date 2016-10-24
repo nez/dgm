@@ -4,13 +4,13 @@ define( function() {
     return function ( $stateProvider ){
         $stateProvider
             .state('visualizers', {
-                abstract  :true,
+                abstract  : true,
                 parent    : 'admin',
                 url       : '/visualizers',
                 views     : {
                     'admin-main'  : {
                       templateUrl : 'partials/visualizers/base',
-                      contoller   : 'VisualizersBaseCtrl'
+                      controller   : 'VisualizersBaseCtrl'
                     }
                 }
             })

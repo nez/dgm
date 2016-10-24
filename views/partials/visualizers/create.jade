@@ -1,8 +1,8 @@
 .row
     .col-md-6.col-md-offset-3
-        form( ng-submit="update()" )
+        form( ng-submit="create()" )
             .form-group
-                label( for="name" ) {{ "Hola mundo" + " otro mundo" }}
+                label( for="name" ) Título
                 input.form-control( type="text" name="name" placeholder="Titulo de Visualizador" ng-model="visualizer.name" )
             .form-group
                 label( for="link" ) Enalace a la visualización

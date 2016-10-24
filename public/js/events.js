@@ -38,7 +38,7 @@ define( function () {
         USERS_ERROR             : 'users.error',
         USERS_QUERIED           : 'users.queried',
         USERS_RETRIEVED         : 'users.retrieved',
-        USERS_UPDATED           : 'users.updated'
-        VISUALIZER_UPDATED      : 'visualizers.updated'
+        USERS_UPDATED           : 'users.updated',
+        VISUALIZERS_UPDATED     : 'visualizers.updated'
     });
 });

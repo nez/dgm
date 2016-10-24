@@ -12,7 +12,7 @@ define( function ( require ) {
     require( 'posts/PostsModule' );
     require( 'sessions/SessionsModule' );
     require( 'users/UsersModule' );
-    require( 'visualizers/VisualizersModule')
+    require( 'visualizers/VisualizersModule');
 
     var app     = angular.module( 'dgm', [
             'angular-medium-editor',
@@ -28,6 +28,7 @@ define( function ( require ) {
             'ui.router',
             'AdminModule',
             'CategoriesModule',
+            'VisualizersModule',
             'CommonModule',
             'DataModule',
             'DatasetsModule',
@@ -35,8 +36,7 @@ define( function ( require ) {
             'LandingModule',
             'PostsModule',
             'SessionsModule',
-            'UsersModule',
-            'VisualizersModule'
+            'UsersModule'
         ]);
 
     app.config( [ '$locationProvider', '$urlRouterProvider', '$httpProvider', function ( $locationProvider, $urlRouterProvider, $httpProvider ) {
@@ -53,7 +53,6 @@ define( function ( require ) {
             return {
                 request     : function( config ) {
                     var api = ( config.url.indexOf( 'cms-api' ) != -1 ) ? true : false;
-                    console.log('intercept -> ' + config.url )
                     if ( api ) {
                         var holder  = '';
 
