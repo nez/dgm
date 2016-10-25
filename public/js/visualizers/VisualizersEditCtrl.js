@@ -9,14 +9,12 @@ define( function() {
           url         : 'cms-api/visualizers'
       };
 
-      $scope.configGrid   = {
-          fileName        : 'grid_photo',
-          url             : 'cms-api/categories'
-      }
-
       $scope.visualizer  = Visualizers.get( $stateParams.id );
 
-      $scope.update       = function () {
+      $scope.create       = function () {
+          if ( !uploading ) {
+              delete $scope.visualizer.cover_photo;
+          }
           Visualizers.update( $stateParams.id, $scope.visualizer );
       };
 
@@ -36,7 +34,7 @@ define( function() {
       });
 
       $scope.$on( 'UPDATE_VISUALIZER', function () {
-          $scope.update();
+          $scope.create();
       });
 
     }
