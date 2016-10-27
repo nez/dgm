@@ -78,7 +78,7 @@ define( function () {
                         templateUrl     : 'partials/front/posts',
                         controller      : 'FrontPostsCtrl'
                     },
-                    'landing-visualizaciones'
+                    'landing-visualizers'
                                         :{
                       templateUrl       : 'partials/front/posts',
                       controller        : 'FrontPostsCtrl'
