@@ -5,7 +5,7 @@
                 label( for="name" ) Título
                 input.form-control( type="text" name="name" placeholder="Titulo de Visualizador" ng-model="visualizer.name" )
             .form-group
-                label( for="link" ) Enalace a la visualización
+                label( for="link" ) Enlace a la visualización
                 input.form-control( type="text" name="link" placeholder="http://www.google.com" ng-model="visualizer.link" )
             .form-group
                 label( for="status" ) Estatus
@@ -13,6 +13,6 @@
                     select.form-control( name="status" ng-model="visualizer.status" )
                         option( value="" ) Seleccione estatus...
                         option( value="PUBLISHED" ng-if="user.type <= 2" ) Publicado
-                        option( value="DRAFT" ) Borrado
+                        option( value="DRAFT" ) Borrador
     .col-md-6.col-md-offset-3
         .cover-photo-upload( data-config="configCover" data-img="visualizer.cover_photo" file-uploader ng-class="{uploaded: visualizer.cover_photo}" )
