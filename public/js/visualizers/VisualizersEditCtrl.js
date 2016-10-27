@@ -30,7 +30,7 @@ define( function() {
           if ( !uploading ) {
               $scope.$state.go( 'visualizers.list' );
           } else {
-              $scope.category.cover_photo = data.cover_photo;
+              $scope.visualizers.cover_photo = data.cover_photo;
               uploading   = false;
           }
       });

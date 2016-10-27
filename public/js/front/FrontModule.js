@@ -23,5 +23,5 @@ define( function ( require ) {
 
     FrontModule.controller( 'FrontPopupCtrl', [ '$scope', '$uibModalInstance', FrontPopupCtrl ]);
 
-    FrontModule.controller( 'FrontPostsCtrl', [ '$scope', '$element', '$stateParams', 'CategoriesService', 'PostsService', FrontPostsCtrl ]);
+    FrontModule.controller( 'FrontPostsCtrl', [ '$scope', '$element', '$stateParams', 'CategoriesService', 'PostsService', 'VisualizersService', FrontPostsCtrl ]);
 });
