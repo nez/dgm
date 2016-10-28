@@ -1,11 +1,12 @@
 var express     = require( 'express' ),
+    fs          = require( 'fs' ),
     mongoose    = require( 'mongoose' ),
     path        = require( 'path' ),
     rimraf      = require( 'rimraf' ),
     config      = require( '../config/app' ),
-    Visualizer     = require( '../models/visualizer' ),
-    Utils       = require( '../lib/utils' ),
+    Visualizer  = require( '../models/visualizer' ),
     Session     = require( '../lib/session' ),
+    Utils       = require( '../lib/utils' ),
     router      = express.Router(),
     _getRefs    = function () {
         return [
@@ -36,9 +37,7 @@ var express     = require( 'express' ),
             cursor.exec( callback )
     });
 
-    router.put('/:id', Session.validate, function (req, res, next){
-        var cover_photo  = false;
-
+    router.post('/', Session.validate, function(req, res, next){
         moveImg     = function ( field, visualizer ){
             Utils.move( req.body[field], path.join( config.uploads_path, viusalizer.id ), function ( e, file ) {
                 visualizer[field] = file;
@@ -46,54 +45,100 @@ var express     = require( 'express' ),
             });
         }
 
-        var updated     = function ( err, visualizer ) {
+        if ( req.session.access_level > 2 ) {
+            var err     = new Error( 'Permission denied' );
+            err.status  = 401;
+            next( err );
+        } else {
+            if ( req.uploading ) {
+                Utils.upload( req, req.body.file, path.join( config.uploads_tmp_path ), function ( e, file ) {
+                    if ( e ) {
+                        next( e );
+                    } else {
+                        res.json( file );
+                    }
+                });
+            } else {
+
+                Visualizer.create({
+                    edition_date : req.body.description,
+                    link        : req.body.link,
+                    name        : req.body.name,
+                    status      : req.body.status
+                }, function ( err, visualizer ) {
+                    if ( err || !visualizer ) {
+                        err         = new Error( 'Invalid visualizer data' );
+                        err.status  = 403;
+                        next( err );
+                    } else {
+                        if ( req.body.cover_photo) {
+                            moveFile( 'cover_photo', visualizer );
+                        }
+
+                        res.json( visualizer );
+                    }
+                });
+            }
+        }
+    });
+
+    router.put('/:id', Session.validate, function (req, res, next){
+         var uploading   = {
+            cover_photo     : false,
+        },
+        moveImg     = function ( field, visualizer ) {
+            Utils.move( req.body[field], path.join( config.uploads_path, visualizer.id ), function ( e, file ) {
+                visualizer[field] = file;
+                visualizer.save( updated );
+            });
+        },
+        updated     = function ( err, visualizer ) {
             res.json( visualizer );
         };
 
-        Visualizer.findById( req.params.id, function (err, visualizer) {
-            if ( err || !visualizer ) {
-                err     = new Error ('Invalid visualizer id');
-                err.status = 404;
-                next(err);
-
-            } else {
-              for( var key in  req.body ){
+    Visualizer.findById( req.params.id, function ( err, visualizer ) {
+        if ( err || !visualizer ) {
+            err         = new Error( 'Invalid visualizer id' );
+            err.status  = 404;
+            next( err );
+        } else {
+            for ( var key in req.body ) {
                 if ( req.session.access_level == 3 ) {
                     if (  key == 'edition_date' || key == 'status' )
                         continue;
                 }
 
+                if ( key == 'edition_date'){
+                    visualizer[key]   = new Date();
+                    continue;
+                }
+
                 if ( key == 'cover_photo') {
-                    if ( visualizer[key] == undefined || visualizer[key].path != req.body[key].path ) {
-                        cover_photo  = true;
+                    if ( visualizer[key] == undefined || visualizer[key].path != req.body[key].path ){
+                        uploading[key]  = true;
                     }
                     continue;
                 }
 
-                if ( key == 'edition_date' ) {
-                    visualizer[key] = new Date();
-                    continue;
-                }
-
-                visualizer[key] = req.body[key];
-              }
-
-              if ( cover_photo ){
-                if ( visualizer.cover_photo ){
-                  fs.unlink( visualizer.cover_photo.path, function(){
-                      moveImg( 'cover_photo', visualizer );
-                  });
-                } else {
-                    moveImg( 'cover_photo', visualizer );
-                }
-              }
-
-              visualizer.save( updated );
+                visualizer[key]   = req.body[key];
             }
-        });
-    });
 
-    router.post( '/', function ( req, res, next ) {
+            if ( uploading.cover_photo ) {
+                if ( uploading.cover_photo ) {
+                    if ( visualizer.cover_photo ) {
+                        fs.unlink( visualizer.cover_photo.path, function () {
+                            moveImg( 'cover_photo', visualizer );
+                        });
+                    } else {
+                        moveImg( 'cover_photo', visualizer );
+                    }
+                }
+            } else {
+                visualizer.save( updated );
+            }
+        }
+    });
+       
     });
 
 
