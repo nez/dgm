@@ -26,7 +26,7 @@ define( function() {
 
       $scope.$on( Visualizers.getEvent( 'UPDATED' ), function ( e, data ) {
           if ( !uploading ) {
-                $scope.$state.go( 'visualizer.list' );
+                $scope.$state.go( 'visualizers.list' );
             } else {
                 $scope.visualizer.cover_photo = data.cover_photo;
                 uploading   = false;
