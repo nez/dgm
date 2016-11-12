@@ -1,3 +1,7 @@
-.inner: p.name {{ visualizer.name }}
-    .img-background: img(src="{{visualizer.cover_photo.path}}", alt="Imagen visualizador")
-        
+.inner
+    img( ng-src="{{visualizer.cover_photo.path }}")
+    a.tag( ui-sref="front.section({ section : visualizer.section.slug, tag : visualizer.tag.slug })" alt="{{ visualizer.tag.name }}" )
+        span( class="tag-icon tag-{{ visualizer.tag.slug }}" )
+    overlay
+        .post-info
+            h3 {{ visualizer.name }}
