@@ -11,16 +11,16 @@
                     include ../includes/post.jade
                 .clearfix.hidden-xs.hidden-sm( ng-if="$index % 2 == 1" )
                 div( ng-repeat-end="" )
-            .row.posts-row(ng-if="section=='visualizadores' && visualizers[0].status!='DRAFT'")
-                .col-md-12.col-xs-12.col-sm-12.post-item( ng-repeat="visualizer in visualizers" )
+            .row.posts-row(ng-if="section=='visualizadores' && visualizer !== undefined && visualizer.status=='PUBLISHED'")
+                .col-md-12.col-xs-12.col-sm-12.post-item
                     include ../includes/visualizer.jade
             .row.posts-row( ng-if="section == 'herramientas'" )
                 .col-md-4.col-xs-12.col-sm-12.tool-item( ng-repeat-start="post in posts" )
                     include ../includes/tool.jade
                 .clearfix.hidden-xs.hidden-sm( ng-if="( $index + 1 ) % 3 == 0" )
                 div( ng-repeat-end="" )
-            p.more-posts(ng-if="section=='visualizadores'"): a( href=" {{visualizers[0].link}} ")
+            p.more-posts(ng-if="section=='visualizadores'"): a( href=" {{visualizer.link}} ")
                 span Ver más visualizaciones
-            p.more-posts(ng-if="section!='visualizadores'"): a( ui-sref="front.section({ section : section, section_id : section_id })") 
+            p.more-posts(ng-if="section!='visualizadores'"): a( ui-sref="front.section({ section : section, section_id : section_id })")
                 span( ng-if="section == 'blog'" ) Ver más historias
                 span( ng-if="section == 'herramientas'" ) Ver más herramientas
