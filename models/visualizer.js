@@ -12,9 +12,17 @@ var mongoose      = require('mongoose'),
           type        : String,
           required    : true
         },
+        content         : {
+            type        : String,
+            required    : true
+        },
         name          : {
           type        : String,
           required    : true
+        },
+        author          : {
+            type        : String,
+            required    : true
         },
         status          : {
             type        : String,
