@@ -4,6 +4,10 @@ var mongoose      = require('mongoose'),
           type        : Object,
           required    : false
         },
+        grid_photo    : {
+            type      : Object,
+            required  : false
+        },
         edition_date  : {
           type        : Date,
           required    : false

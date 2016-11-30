@@ -71,8 +71,14 @@ var express     = require( 'express' ),
                         err.status  = 403;
                         next( err );
                     } else {
-                        if ( req.body.cover_photo) {
+                        if ( req.body.cover_photo || req.body.grid_photo ) {
+                          if( req.body.cover_photo ) {
                             moveFile( 'cover_photo', visualizer );
+                          }
+
+                          if( req.body.grid_photo ) {
+                            moveFile( 'grid_photo', visualizer );
+                          }
                         }
 
                         res.json( visualizer );
@@ -85,6 +91,7 @@ var express     = require( 'express' ),
     router.put('/:id', Session.validate, function (req, res, next){
          var uploading   = {
             cover_photo     : false,
+            grid_photo      : false
         },
         moveImg     = function ( field, visualizer ) {
             Utils.move( req.body[field], path.join( config.uploads_path, visualizer.id ), function ( e, file ) {
@@ -113,7 +120,7 @@ var express     = require( 'express' ),
                     continue;
                 }
 
-                if ( key == 'cover_photo') {
+                if ( key == 'cover_photo' || key=='grid_photo') {
                     if ( visualizer[key] == undefined || visualizer[key].path != req.body[key].path ){
                         uploading[key]  = true;
                     }
@@ -123,7 +130,7 @@ var express     = require( 'express' ),
                 visualizer[key]   = req.body[key];
             }
 
-            if ( uploading.cover_photo ) {
+            if ( uploading.cover_photo  || uploading.grid_photo) {
                 if ( uploading.cover_photo ) {
                     if ( visualizer.cover_photo ) {
                         fs.unlink( visualizer.cover_photo.path, function () {
@@ -133,12 +140,21 @@ var express     = require( 'express' ),
                         moveImg( 'cover_photo', visualizer );
                     }
                 }
+                if ( uploading.grid_photo ) {
+                  if( visualizer.grid_photo ) {
+                    fs.unlink( visualizer.grid_photo.path, function() {
+                      moveImg( 'grid_photo', visualizer)
+                    })
+                  } else {
+                    moveImg( 'grid_photo', visualizer );
+                  }
+                }
             } else {
                 visualizer.save( updated );
             }
         }
     });
-       
+
     });
 
 

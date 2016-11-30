@@ -11,7 +11,7 @@
                     include ../includes/post.jade
                 .clearfix.hidden-xs.hidden-sm( ng-if="$index % 2 == 1" )
                 div( ng-repeat-end="" )
-            .row.posts-row(ng-if="section=='visualizadores' && visualizer !== undefined && visualizer.status=='PUBLISHED'")
+            .row.posts-row(ng-if="section=='visualizaciones' && visualizer !== undefined && visualizer.status=='PUBLISHED'")
                 .col-md-12.col-xs-12.col-sm-12.post-item
                     include ../includes/visualizer.jade
             .row.posts-row( ng-if="section == 'herramientas'" )

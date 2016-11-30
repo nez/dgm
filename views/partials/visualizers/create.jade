@@ -2,7 +2,7 @@
     .col-sm-12.col-md-8
         form( ng-submit="create()" )
             .form-group
-                label( for="link" ) Enlace a la visualización
+                label( for="link" ) Enlace a las visualizaciones
                 input.form-control( type="text" name="link" placeholder="http://www.google.com" ng-model="visualizer.link" )
             .form-group
                 label( for="status" ) Estatus
@@ -11,9 +11,10 @@
                         option( value="" ) Seleccione estatus...
                         option( value="PUBLISHED" ng-if="user.type <= 2" ) Publicado
                         option( value="DRAFT" ) Borrador
-            .post
-                h1.title( medium-editor bind-options="{disableReturn: true, disableExtraSpaces: true, toolbar: { align : 'left', buttons : [ 'bold', 'italic', 'underline' ], static : true, updateOnEmptySelection : true } }" data-placeholder="Título del visualizador" ng-model="visualizer.name" )
-                p.author( medium-editor bind-options="{disableReturn: true, disableExtraSpaces: true, toolbar: false }" data-placeholder="Escuadron de datos" ng-model="visualizer.author" )
-                .content( medium-editor bind-options="{toolbar : { buttons : [ 'bold', 'italic', 'underline', 'anchor', 'h2', 'quote', 'orderedlist', 'unorderedlist' ] }, anchor : { targetCheckbox : true, targetCheckboxText : '¡Abrir en nueva ventana!' }}" data-placeholder="Contenido del artículo" ng-model="visualizer.content" )
-    .col-sm-12.col-md-4
         .cover-photo-upload( data-config="configCover" data-img="visualizer.cover_photo" file-uploader ng-class="{uploaded: visualizer.cover_photo}" )
+        .post
+            h1.title( medium-editor bind-options="{disableReturn: true, disableExtraSpaces: true, toolbar: { align : 'left', buttons : [ 'bold', 'italic', 'underline' ], static : true, updateOnEmptySelection : true } }" data-placeholder="Título del visualizador" ng-model="visualizer.name" )
+            p.author( medium-editor bind-options="{disableReturn: true, disableExtraSpaces: true, toolbar: false }" data-placeholder="Escuadron de datos" ng-model="visualizer.author" )
+            .content( medium-editor bind-options="{toolbar : { buttons : [ 'bold', 'italic', 'underline', 'anchor', 'h2', 'quote', 'orderedlist', 'unorderedlist' ] }, anchor : { targetCheckbox : true, targetCheckboxText : '¡Abrir en nueva ventana!' }}" data-placeholder="Contenido del artículo" ng-model="visualizer.content" )
+    .col-sm-12.col-md-4
+        .grid-photo-upload( data-config="configGrid" data-img="visualizer.grid_photo" file-uploader ng-class="{uploaded: visualizer.grid_photo}" )

@@ -1,6 +1,7 @@
 .inner
     a(href="{{ visualizer.link }}" alt="{{ visualizer.name }}")
-        img( ng-src="{{ visualizer.cover_photo.path }}")
+        img.hidden-xs.hidden-sm( ng-src="{{ visualizer.cover_photo.path }}")
+        img.hidden-md.hidden-lg( ng-src="{{ visualizer.grid_photo.path }}")
     overlay
         .post-info
             h3

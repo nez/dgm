@@ -19,7 +19,7 @@ define( function ( require ) {
 
     FrontModule.controller( 'FrontCtrl', [ '$cookies', '$uibModal', FrontController ] );
 
-    FrontModule.controller( 'FrontHomeCtrl', [ '$scope', '$cookies', '$uibModal', FrontHomeCtrl ]);
+    FrontModule.controller( 'FrontHomeCtrl', [ '$scope', '$cookies', '$uibModal', 'VisualizersService', FrontHomeCtrl ]);
 
     FrontModule.controller( 'FrontPopupCtrl', [ '$scope', '$uibModalInstance', FrontPopupCtrl ]);
 
