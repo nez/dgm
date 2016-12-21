@@ -1,7 +1,7 @@
 'use strict';
 
 define( function () {
-    return function ( $scope, $element, $stateParams, Categories, Posts ) {
+    return function ( $scope, $element, $stateParams, Categories, Posts, Visualizers ) {
         $scope.section      = $element.data( 'section' );
         var per_page        = ( $scope.section == 'blog' ) ? 4 : 6,
             queryFeatured   = function ( section, tag ) {
@@ -67,6 +67,15 @@ define( function () {
                     queryPosts( $scope.section_id );
                 }
             }
+        });
+
+        Visualizers.query({
+            page        : 1,
+            per_page    : 1,
+        }).$promise.then( function ( data ){
+            if( !data[0] )
+                return
+            $scope.visualizer = data[0];
         });
     };
 });

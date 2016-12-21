@@ -12,6 +12,7 @@ define( function ( require ) {
     require( 'posts/PostsModule' );
     require( 'sessions/SessionsModule' );
     require( 'users/UsersModule' );
+    require( 'visualizers/VisualizersModule');
 
     var app     = angular.module( 'dgm', [
             'angular-medium-editor',
@@ -27,6 +28,7 @@ define( function ( require ) {
             'ui.router',
             'AdminModule',
             'CategoriesModule',
+            'VisualizersModule',
             'CommonModule',
             'DataModule',
             'DatasetsModule',
@@ -51,7 +53,6 @@ define( function ( require ) {
             return {
                 request     : function( config ) {
                     var api = ( config.url.indexOf( 'cms-api' ) != -1 ) ? true : false;
-
                     if ( api ) {
                         var holder  = '';
 

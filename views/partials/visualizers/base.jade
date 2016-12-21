@@ -1,0 +1,8 @@
+.row.admin-controls
+    div.col-md-8
+        h3( ng-if="$state.is( 'visualizers.list' )" ) Visualizaciones
+        h3( ng-if="$state.is( 'visualizers.edit' )" ) Editar Visualización
+    div.col-md-4.view-controls
+        button.btn.btn-success.pull-right( ng-if="$state.is( 'visualizers.edit' )" ng-click="update()" ) Actualizar Visualización
+        a.btn.btn-default.pull-right( ui-sref="visualizers.list" ng-if="$state.is( 'visualizers.edit' )" ) Atrás
+div( ui-view="visualizers-main" )
