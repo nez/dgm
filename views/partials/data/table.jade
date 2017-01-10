@@ -1,13 +1,13 @@
 .container-fluid
     .row
         .col-md-12
-            h2 
+            h2
                 a( href="//datos.gob.mx/busca" target="_self" ) Datos
             ul.data-list.row
-                li.col-md-4.col-xs-12.col-sm-12.active( ng-click="load( $event, 0 )" ) 
-                    span Recomendados
-                li.col-md-4.col-xs-12.col-sm-12( ng-click="load( $event, 1 )" ) 
+                li.col-md-4.col-xs-12.col-sm-12.active( ng-click="load( $event, 0 )" )
                     span Recientes
+                li.col-md-4.col-xs-12.col-sm-12( ng-click="load( $event, 1 )" )
+                    span Recomendados
                 li.col-md-4.col-xs-12.col-sm-12( ng-click="load( $event, 2 )" )
                     span Más descargados
             .data-table
