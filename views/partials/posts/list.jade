@@ -3,7 +3,7 @@
         div.row.table-header
             div.col-md-3.col-md-offset-9
                 form.search-form
-                    input.form-control( type="text" placeholder="Buscar" )
+                    input.form-control( ng-model="srch" type="text" placeholder="Buscar" )
                     i.glyphicon.glyphicon-search
         table.table.table-striped
             thead
@@ -16,8 +16,8 @@
                     th( width="10%" ) Fecha de creación
                     th( width="8%" ) Estatus
             tbody
-                tr( ng-repeat="post in posts" )
-                    td 
+                tr( ng-repeat="post in posts|filter:srch" )
+                    td
                         a( ui-sref="posts.edit({ id : post._id })" alt="{{ post.name }}" ) {{ post.name }}
                     td {{ post.section.name }}
                     td {{ post.category.name }}
