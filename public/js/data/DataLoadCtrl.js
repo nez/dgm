@@ -11,7 +11,13 @@ define( function () {
             ],
             query       = function ( type ) {
                 switch( type ) {
+
                     case 0 :
+                        var q       = ( $stateParams.category ) ? 'tags:' + $stateParams.category : '';
+
+                        $scope.datasets = CkanService.datasets( q, 5, 'dcat_modified desc' );
+                        break;
+                    case 1 :
                         $scope.datasets     = Array();
                         Datasets.query({
                             order       : 'DESC',
@@ -36,11 +42,6 @@ define( function () {
                                 });
                             }
                         });
-                        break;
-                    case 1 :
-                        var q       = ( $stateParams.category ) ? 'tags:' + $stateParams.category : '';
-
-                        $scope.datasets = CkanService.datasets( q, 5, 'dcat_modified desc' );
                         break;
                     case 2 :
                         $scope.datasets     = Array();
