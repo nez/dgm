@@ -19,6 +19,15 @@ define( function () {
                         url     : sections[0]
                     });
                 }
+                if ( sections[0] == 'desarrolladores' ) {
+                    scope.crumbs.push({
+                        params  : {
+                            section     : sections[0]
+                        },
+                        sref    : 'front.developers',
+                        url     : sections[0]
+                    });
+                }
                 if ( query && query.category ) {
                     scope.crumbs.push({
                         params  : {
