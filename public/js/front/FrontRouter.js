@@ -173,7 +173,8 @@ define( function () {
                 url     : '/desarrolladores',
                 views   : {
                     'front-container'   : {
-                        templateUrl     : 'partials/developers/home'
+                        templateUrl     : 'partials/developers/home',
+                        controller      : 'FrontDevelopersCtrl'
                     }
                 }
             })
