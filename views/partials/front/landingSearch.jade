@@ -27,14 +27,6 @@ span.copyright-banner
                         input.form-control( type="text" name="keyword" placeholder="Ej. Centros educativos" ng-model="keyword" )
                         button.btn.btn-primary( type="submit" )
                             i.glyphicon.glyphicon-search
-                    p.shadow Etiquetas populares
-                    ul.tags-list
-                        li
-                            a( href="busca/dataset?vocab_gov_types=Federal" target="_self" ) Federal
-                        li
-                            a( href="busca/dataset?tags=energia-y-medio-ambiente" target="_self" ) Energía y Medio Ambiente
-                        li
-                            a( href="busca/dataset?tags=desarrollo-sostenible" target="_self" ) Desarrollo Sostenible
             ul.categories-list.hidden-sm.hidden-xs
                 li( ng-repeat="tag in tags" )
                     a( ui-sref="category.details({ category : tag.slug })" alt="{{ tag.name }}" uib-tooltip="{{ tag.name }}" )
