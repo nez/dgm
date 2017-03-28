@@ -31,8 +31,7 @@
         "medium-editor"         : "5.16.1",
         "requirejs"             : "2.2.0",
         "slug"                  : "0.9.1",
-        "ui-router"             : "0.2.18",
-        "underscore"            : "1.8.3"
+        "ui-router"             : "0.2.18"
     },
     "overrides"     : {
         "angular"               : {

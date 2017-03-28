@@ -1,9 +1,0 @@
-.inner
-    a.tag( ui-sref="front.section({ section : post.section.slug, tag : post.category.slug })" alt="{{ post.category.name }}" )
-        span( class="tag-icon tag-developers" )
-    .tool-content
-        h3
-            a( href="{{ post.datasets[0] }}" alt="{{ post.name }}" target="_blank" ) {{ post.name }}
-        .author( ng-bind-html="post.content" )
-        p
-            a.read-more( href="{{ post.datasets[0] }}" alt="{{ post.name }}" target="_blank" ng-if="post.datasets[0]" ) Leer documentación
