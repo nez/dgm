@@ -1,0 +1,190 @@
+.breadcrumb-container
+    .container-fluid
+        .row
+            .col-md-7.col-xs-12.col-sm-12
+                breadcrumb
+section#developers-banner
+    .container-fluid
+        .row
+            .col-md-12
+                img( src="img/ic-developers.png" )
+                h1 Desarrolladores
+.container-fluid
+    .row
+        .col-md-12
+            .developers-section
+                h2.section-title Desarrolladores
+                .content( ng-bind-html="intro" )
+                p Datos.gob.mx es una plataforma abierta para desarrolladores de todo tipo, hackers cívicos, emprendedores de tecnología e investigadores. Aquí encontrarás información sobre nuestras API, uso de software libre y documentación relacionada.
+                p En esta sección podrás tener:
+                ol
+                  li Acceso al catálogo de Datos Abiertos del gobierno a través de <b> api.datos.gob.mx </b>
+                  li Acceso a los <b>metadatos de datos.gob.mx</b> mediante la API de CKAN, el catálogo de datos abiertos del Gobierno de la República.
+                  li Acceso a los <b>metadatos de datos.gob.mx</b> mediante la API de Adela, la aplicación para publicar datos abiertos en datos.gob.mx.
+                  li Listado de las API públicas que existen en la Administración Pública Federal.
+                  li <b>Videos, documentos y guías</b> para el uso de las API.
+            .developers-section
+                h2.section-title API
+                p Puedes interactuar con datos.gob.mx mediante varias API, principalmente CKAN, Adela y diversos recursos de datos alojados en api.datos.gob.mx
+            .developers-section
+                h2.section-title API de CKAN
+                div Utilizamos el sistema de repositorios de datos abiertos
+                  a(href="http://ckan.org/developers/about-ckan/") CKAN
+                  | para compartir los Datos Abiertos de las dependencias de la Administración Pública Federal, así como de gobiernos locales.
+                div Utilizando la API de CKAN puedes consultar todos los metadatos de lo que ves en el portal
+                  a(href="https://datos.gob.mx/busca") datos.gob.mx/busca
+                div La URL base de la API es http://datos.gob.mx/busca/api/3/
+                div Un endpoint muy útil para consultar datos es:
+                  a(href="https://datos.gob.mx/busca/api/3/action/package_search?q=BUSQUEDA") https://datos.gob.mx/busca/api/3/action/package_search?q=BUSQUEDA
+                div Y puedes consultar
+                  a(href="http://docs.ckan.org/") la documentación completa de la API
+                  | (en inglés).
+            .developers-section
+                h2.section-title API Adela
+                div <b>Adela</b> es la plataforma para publicar datos abiertos en
+                  a(href="https://datos.gob.mx/busca") datos.gob.mx/busca
+                  | y darle seguimiento a la iniciativa de Datos Abiertos.
+                div El objetivo de <b>Adela</b> es simplificar el proceso de publicación en
+                  a(href="https://datos.gob.mx/busca") datos.gob.mx/busca
+                  | al funcionario de una institución de gobierno.
+                div En <b>Adela</b>, los funcionarios pertenecen y publican datos para una organización. Se puede obtener el listado de dependencias existentes en el siguiente endpoint:
+                br
+                div(style="text-align: center")
+                  b GET adela.datos.gob.mx/api/v1/organizations
+                br
+                | El endpoint regresa un arreglo de objetos, con la información de las organizaciones en <b>Adela</b>. En el siguiente enlace, se puede ver un ejemplo de la respuesta de este endpoint:
+                div(style="text-align: center")
+                  a(href="https://gist.github.com/babasbot/aff87a1ca9b083919a730ab5bf99a987") https://gist.github.com/babasbot/aff87a1ca9b083919a730ab5bf99a987
+                br
+                div(style="text-align: center")
+                  table.table.table-bordered
+                    tr
+                      td
+                        b title
+                      td Nombre de la organización en Adela
+                    tr
+                      td
+                        b slug
+                      td Identificador único de una organización
+                    tr
+                      td
+                        b description
+                      td Una descripción sobre la organización
+                    tr
+                      td
+                        b logo_url
+                      td URL con el logotipo de la organización
+                    tr
+                      td
+                        b gov_type
+                      td El tipo de la organización
+                    tr
+                      td
+                        b created_at
+                      td Fecha de creación de la organización
+                    tr
+                      td
+                        b updated_at
+                      td Fecha de la última actualización de la organización
+
+                div Los <b>catálogos de datos</b> agrupan los <b>conjuntos de datos</b>) publicados por las organizaciones en <b>Adela</b>. Los <b>catálogos de datos</b> siguen el estándar DCAT.
+                div <b>DCAT</b> es un vocabulario que permite interoperar entre distintas fuentes. Si quieres conocer más sobre <b>DCAT</b>, visita este enlace:
+                  a(href="https://www.w3.org/TR/vocab-dcat/") https://www.w3.org/TR/vocab-dcat/
+                div Para obtener el catálogo de una organización puedes hacer una consulta al siguiente endpoint:
+                div(style="text-align: center")
+                  br
+                  b GET adela.datos.gob.mx/api/v1/:slug:/catalogo.json
+                br
+                div(style="text-align: center")
+                  table.table.table-bordered
+                    tr
+                      td
+                        b title
+                      td Nombre del catálogo de datos.
+                    tr
+                      td
+                        b description
+                      td La descripción del contenido del catálogo de datos.
+                    tr
+                      td
+                        b homepage
+                      td La url del sitio de la organización.
+                    tr
+                      td
+                        b issued
+                      td Fecha en que se publicó el catálogo de datos.
+                    tr
+                      td
+                        b modified
+                      td La fecha de la última modificación del catálogo.
+                    tr
+                      td
+                        b language
+                      td El código ISO 639-1 del lenguaje del catálogo de datos.
+                    tr
+                      td
+                        b license
+                      td El tipo de licencia del catálogo de datos.
+                    tr
+                      td
+                        b datasets
+                      td El arreglo de conjuntos de datos.
+
+                div Los <b>catálogos de datos</b> contienen una <b>colección</b> de conjuntos de datos. Un <b>conjunto de datos</b> es una colección de datos.
+                div El endpoint del <b>catálogo de datos</b> lista los conjuntos de datos de una organización. A continuación se describen los <b>metadatos</b> de un <b>conjunto de datos</b>.
+                br
+                div(style="text-align: center")
+                  table.table.table-bordered
+                    tr
+                      td
+                        b title
+                      td El título del conjunto de datos.
+                    tr
+                      td
+                        b description
+                      td La descripción del conjunto de datos.
+                    tr
+                      td
+                        b modified
+                      td La fecha de última modificación de un conjunto de datos.
+                    tr
+                      td
+                        b contactPoint
+                      td El nombre del responsable del conjunto de datos.
+                    tr
+                      td
+                        b identifier
+                      td El identificador único de un conjunto de datos.
+                    tr
+                      td
+                        b accessLevel
+                      td El tipo de acceso al conjunto de datos. i.e. publico, privado, restringido.
+                    tr
+                      td
+                        b accessLevelComment
+                      td La justificación del tipo de acceso a un conjunto de datos i.e. “Contiene datos sensibles”
+                    tr
+                      td
+                        b spatial
+                      td El área geográfica cubierta por el conjunto.
+                    tr
+                      td
+                        b lenguage
+                      td El código ISO 639-1 del lenguaje del catálogo de datos.
+                    tr
+                      td
+                        b publisher
+                      td El objeto con la información de contacto del responsable del conjunto de datos.
+                    tr
+                      td
+                        b keyword
+                      td El arreglo con las palabras clave del conjunto de datos.
+            .developers-section
+                h2.section-title Código Abierto
+                p Publicamos diversas herramientas en
+                  a(href="https://github.com/mxabierto") https://github.com/mxabierto
+                  | y utilizamos una diversidad de proyectos de código abierto como CKAN, PostgreSQL, MongoDB, Nginx, GNU/Linux, Ruby, Go, Python, NodeJS, AngularJS, Express, Clojure, Bower, Grunt, Kubernetes, Docker, Jenkins, Wordpress, Sphinx, entre otros.
+            .developers-section
+                h2.section-title Contribuye
+                p Revisa los issues de los proyectos de
+                  a(href="https://github.com/mxabierto") https://github.com/mxabierto
