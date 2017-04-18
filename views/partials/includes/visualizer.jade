@@ -1,10 +1,10 @@
 .inner
-    a(href="{{ visualizer.link }}" alt="{{ visualizer.name }}")
-        img.hidden-xs.hidden-sm( ng-src="{{ visualizer.cover_photo.path }}")
-        img.hidden-md.hidden-lg( ng-src="{{ visualizer.grid_photo.path }}")
+    //- a(href="{{ visualizer.link }}" alt="{{ visualizer.name }}")
+      //-  img.hidden-xs.hidden-sm( ng-src="{{ visualizer.cover_photo.path }}")
+      //-  img.hidden-md.hidden-lg( ng-src="{{ visualizer.grid_photo.path }}")
     overlay
         .post-info
+            p.excerpt.hidden-xs.hidden-sm {{ visualizer.content | excerpt }}
+            iframe(src="https://datos.gob.mx/visualizacion/barras/indice-rezago-social-2000.html" frameborder="0" scrolling="no" style="overflow: hidden; width: 100%; height: 600px;")
             h3
-                a( href="{{ visualizer.link }}" alt="{{ visualizer.name }}" ng-if="visualizer.link" ) {{ visualizer.name }}
-            p.excerpt.hidden-xs.hidden-sm {{ visualizer.content | excerpt | limitTo:150 }}...
-            p.author {{ visualizer.author }}
+              a( href="{{ visualizer.link }}" alt="{{ visualizer.name }}" ng-if="visualizer.link" ) {{ visualizer.name }}
