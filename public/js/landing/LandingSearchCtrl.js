@@ -2,8 +2,11 @@
 
 define( function () {
     return function ( $scope, Categories ) {
-        var query       = '';
 
+        $scope.numberOrganizations = "222";
+        $scope.numberData = "0";
+
+        var query       = '';
         $scope.tags     = Categories.query({
             slug        : {
                 $ne     : 'nula'
@@ -24,5 +27,17 @@ define( function () {
 
             window.open( 'busca/dataset?' + query, '_self' );
         };
+
+        function updateDataLanding(){
+          $.ajax("https://api.datos.gob.mx/v1/resources?pageSize=1")
+          .done(function(data){
+              $scope.numberData = data.pagination.total;
+          })
+          .fail(function(err){
+            console.log(err);
+          });
+        }
+
+        updateDataLanding();
     };
 });

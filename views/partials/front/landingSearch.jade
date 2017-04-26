@@ -4,7 +4,7 @@ span.copyright-banner
     .row
         .col-md-12
             h3 Descubre <strong>Datos Abiertos</strong> de tu gobierno.
-            p más de 18,500 datos de 222 instituciones
+            p más de {{numberData|number:0}} datos de {{numberOrganizations|number:0}} instituciones
             .row
                 .col-md-8.col-md-offset-2
                     form.search-form.form-inline.hidden-xs.hidden-sm( ng-submit="search()" )
