@@ -169,6 +169,15 @@ define( function () {
                     }
                 }
             })
+            .state( 'front.developers', {
+                url     : '/desarrolladores',
+                views   : {
+                    'front-container'   : {
+                        templateUrl     : 'partials/developers/home',
+                        controller      : 'FrontDevelopersCtrl'
+                    }
+                }
+            })
             .state( '404', {
                 parent  : 'front',
                 url     : '/404',
