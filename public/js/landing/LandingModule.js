@@ -6,7 +6,7 @@ define( function ( require ) {
 
     var LandingModule           = angular.module( 'LandingModule', []);
 
-    LandingModule.controller( 'LandingSearchCtrl', [ '$scope', 'CategoriesService', LandingSearchCtrl ]);
+    LandingModule.controller( 'LandingSearchCtrl', [ '$scope', '$http', 'CategoriesService', LandingSearchCtrl ]);
 
     LandingModule.controller( 'LandingSubscribeCtrl', [ '$scope', LandingSubscribeCtrl ]);
 });

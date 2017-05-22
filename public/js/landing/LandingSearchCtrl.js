@@ -1,7 +1,7 @@
 'use strict';
 
 define( function () {
-    return function ( $scope, Categories ) {
+    return function ( $scope, $http, Categories ) {
 
         $scope.numberOrganizations = "222";
         $scope.numberData = "0";
@@ -28,16 +28,10 @@ define( function () {
             window.open( 'busca/dataset?' + query, '_self' );
         };
 
-        function updateDataLanding(){
-          $.ajax("https://api.datos.gob.mx/v1/resources?pageSize=1")
-          .done(function(data){
-              $scope.numberData = data.pagination.total;
-          })
-          .fail(function(err){
-            console.log(err);
-          });
-        }
-
-        updateDataLanding();
+        $http.get('https://api.datos.gob.mx/v1/resources?pageSize=1')
+        .then(function(response){
+          if( response.data.pagination != undefined )
+            $scope.numberData = response.data.pagination.total;
+        });
     };
 });
