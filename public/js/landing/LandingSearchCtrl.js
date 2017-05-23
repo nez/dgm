@@ -33,5 +33,11 @@ define( function () {
           if( response.data.pagination != undefined )
             $scope.numberData = response.data.pagination.total;
         });
+
+        $http.get('https://api.datos.gob.mx/v1/ckan-organizations?pageSize=1 ')
+        .then( function( response ) {
+          if( response.data.pagination != undefined )
+            $scope.numberOrganizations = response.data.pagination.total;
+        });
     };
 });
