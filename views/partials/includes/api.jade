@@ -3,7 +3,7 @@
         span( class="tag-icon tag-developers" )
     .tool-content
         h3
-            a( href="{{ post.datasets[0] }}" alt="{{ post.name }}" target="_blank" ) {{ post.name }}
+            {{ post.name }}
         .author( ng-bind-html="post.content" )
         p
             a.read-more( href="{{ post.datasets[0] }}" alt="{{ post.name }}" target="_blank" ng-if="post.datasets[0]" ) Leer documentación
