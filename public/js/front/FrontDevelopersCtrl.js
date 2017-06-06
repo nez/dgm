@@ -9,11 +9,11 @@ define( function () {
             }).$promise.then( function ( posts ) {
                 $scope.intro    = _.findWhere( posts, {
                     slug    : 'desarrolladores-intro'
-                }).content;
+                });
 
                 $scope.catalog  = _.findWhere( posts, {
                     slug    : 'catalogo-de-datos-abiertos'
-                }).content;
+                });
 
                 $scope.cdn_apis = _.filter( posts, function ( el ) {
                     return el.category.slug == 'api-cdn'
