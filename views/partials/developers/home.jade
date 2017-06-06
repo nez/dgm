@@ -16,15 +16,14 @@ section#developers-banner
                 h2.section-title Desarrolladores
                 .content( ng-bind-html="intro" )
             .developers-section
-                h2.section-title API de la CDN
-                p Interfaces de desarrollo de aplicaciones de la Coordinación de Estrategia Digital Nacional.
+                h2.section-title Interfaces de programación de aplicaciones  (API)
+                p Puedes interactuar con datos.gob.mx mediante varias API, principalmente CKAN, ADELA y diversos recursos de datos alojados en api.datos.gob.mx.
                 .row.posts-row
                     .col-md-10.tool-item( ng-repeat-start="post in cdn_apis" )
                         include ../includes/api.jade
                     .clearfix( ng-if="( $index + 1 ) % 1 == 0" )
                     div( ng-repeat-end="" )
             .developers-section
-                h2.section-title Catálogo de Datos Abiertos
                 .content( ng-bind-html="catalog" )
             .developers-section
                 h2.section-title API de otras organizaciones
