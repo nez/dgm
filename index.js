@@ -9,7 +9,7 @@ var express     = require( 'express' ),
 app.set( 'port', process.env.PORT || 3000 );
 app.set( 'env', process.env.ENV || 'development' );
 app.settings.env    = app.get( 'env' );
-process.env.CDN_URL = process.env.CDN_URL   || 'http://cdn.datos.gob.mx/qa/bower_components/';
+process.env.CDN_URL = process.env.CDN_URL   || 'http://cdn.datos.gob.mx/bower_components/';
 
 start.launch( app );
 
