@@ -82,7 +82,7 @@ define( function ( require ) {
     }]);
 
     app.run([ '$rootScope', '$state', '$window', '$location', function ( $rootScope, $state, $window, $location ) {
-        $window.ga( 'create', 'UA-44411606-15', 'auto' );
+        $window.ga( 'create', 'UA-44411606-12', 'auto' );
         $rootScope.$state   = $state;
 
         $rootScope.$on( '$stateChangeSuccess', function ( event ) {
