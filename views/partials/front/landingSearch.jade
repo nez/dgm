@@ -10,19 +10,6 @@ span.copyright-banner
                 .col-md-8.col-md-offset-2
                     form.search-form.form-inline.hidden-xs.hidden-sm( ng-submit="search()" )
                         input.form-control( type="text" name="keyword" placeholder="Ej. Centros educativos" ng-model="keyword" )
-                        select.form-control( name="category" ng-model="category" custom-select )
-                                option( value="" ) Todas las categorias
-                                option( value="salud" ) Salud
-                                option( value="geoespacial" ) Geoespacial
-                                option( value="seguridad-y-justicia" ) Seguridad y justicia
-                                option( value="energia-y-medio-ambiente" ) Energía y medio ambiente
-                                option( value="educacion" ) Educación
-                                option( value="economia" ) Economía
-                                option( value="cultura-y-turismo" ) Cultura y turismo
-                                option( value="finanzas-y-contrataciones" ) Finanzas y contrataciones
-                                option( value="infraestructura" ) Infraestructura
-                                option( value="desarrollo-sostenible" ) Desarrollo sostenible
-                                option( value="gobiernos-locales" ) Gobiernos locales
                         button.btn.btn-primary( type="submit" ) Buscar
                     form.search-form.form-inline.hidden-md.hidden-lg( ng-submit="search()" )
                         input.form-control( type="text" name="keyword" placeholder="Ej. Centros educativos" ng-model="keyword" )
