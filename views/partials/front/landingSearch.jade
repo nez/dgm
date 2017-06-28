@@ -17,5 +17,6 @@ span.copyright-banner
                             i.glyphicon.glyphicon-search
             ul.categories-list.hidden-sm.hidden-xs
                 li( ng-repeat="tag in tags" )
-                    a( ui-sref="category.details({ category : tag.slug })" alt="{{ tag.name }}" uib-tooltip="{{ tag.name }}" )
+                    a( ui-sref="category.details({ category : tag.slug })" alt="{{ tag.name }}" )
                         img( src="img/ic-{{ tag.slug }}.png" alt="{{ tag.name }}" )
+                        span {{ tag.name }}
