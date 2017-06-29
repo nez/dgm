@@ -83,10 +83,12 @@ define( function ( require ) {
 
     app.run([ '$rootScope', '$state', '$window', '$location', function ( $rootScope, $state, $window, $location ) {
         $window.ga( 'create', 'UA-44411606-12', 'auto' );
+        $window.ga( 'create', 'UA-69802193-1', 'auto', {'name': 'GoAn2', 'allowLinker':true });
         $rootScope.$state   = $state;
 
         $rootScope.$on( '$stateChangeSuccess', function ( event ) {
             $window.ga('send', 'pageview', $location.path());
+            $window.ga('GoAn2.send', 'pageview', $location.path());
         });
     }]);
 
