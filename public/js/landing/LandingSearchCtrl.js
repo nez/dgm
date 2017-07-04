@@ -3,8 +3,8 @@
 define( function () {
     return function ( $scope, $http, Categories ) {
 
-        $scope.numberOrganizations = "222";
-        $scope.numberData = "0";
+        $scope.numberOrganizations = undefined;
+        $scope.numberData = undefined;
 
         var query       = '';
         $scope.tags     = Categories.query({
