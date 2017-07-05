@@ -7,7 +7,7 @@ span.copyright-banner
             h3 Descubre <strong>Datos Abiertos</strong> de tu gobierno.
             p {{numberData|number:0}} datos de {{numberOrganizations|number:0}} instituciones
             .row
-                .col-md-8.col-md-offset-2
+                .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2
                     form.search-form.form-inline.hidden-xs.hidden-sm( ng-submit="search()" )
                         input.form-control( type="text" name="keyword" placeholder="Ej. Centros educativos" ng-model="keyword" )
                         button.btn.btn-primary( type="submit" ) Buscar
@@ -15,8 +15,10 @@ span.copyright-banner
                         input.form-control( type="text" name="keyword" placeholder="Ej. Centros educativos" ng-model="keyword" )
                         button.btn.btn-primary( type="submit" )
                             i.glyphicon.glyphicon-search
-            ul.categories-list.hidden-sm.hidden-xs
-                li( ng-repeat="tag in tags" )
-                    a( ui-sref="category.details({ category : tag.slug })" alt="{{ tag.name }}" )
-                        img( src="img/ic-{{ tag.slug }}.png" alt="{{ tag.name }}" )
-                        span {{ tag.name }}
+
+.categories.hidden-sm.hidden-xs
+    ul.categories-list
+        li( ng-repeat="tag in tags" )
+            a( ui-sref="category.details({ category : tag.slug })" alt="{{ tag.name }}" )
+                img( src="img/ic-{{ tag.slug }}.png" alt="{{ tag.name }}" )
+                span {{ tag.name }}
